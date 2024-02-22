@@ -7,4 +7,3 @@ struct cliente
     int CodigoCliente;
 };
 
-
