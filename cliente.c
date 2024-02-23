@@ -16,15 +16,11 @@
             printf("Endereco: %s\n",(*usuario)[ordem].Endereco);
             printf("Codigo: %d\n\n",(*usuario)[ordem].CodigoCliente);    
         }
-        
-        int tecla = 0;
-        printf("Digite qualquer tecla para sair");
-        scanf("%d",&tecla);
     }
 
     void NovoCliente(Cliente** usuario, int *quantidade)
     {
-        *quantidade += 1;
+        *quantidade = *quantidade + 1;
         *usuario = realloc(*usuario, (*quantidade) * sizeof(Cliente));
 
         printf("Diga o nome do novo usuario: \n");

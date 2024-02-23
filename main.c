@@ -15,7 +15,7 @@ int main(void)
     char opcao;
 
     do
-    {  
+    { 
         printf("====MENU====\n\n");
         printf("1 - ver clientes\n");
         printf("2 - Adicionar um cliente novo\n");
@@ -31,6 +31,9 @@ int main(void)
         {
             case '1':
                 VerClientes(&usuario,&QuantidadeDeAlunos);
+                int tecla = 0;
+                printf("Digite qualquer tecla para sair");
+                scanf("%d",&tecla);
             break;
 
             case '2':
