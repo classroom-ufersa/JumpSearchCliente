@@ -2,9 +2,18 @@
 
 int main(void)
 {
-    //adciconando uma variavel para interagir com o menu
+    int QuantidadeDeAlunos = 0;
+    Cliente *usuario = malloc(sizeof(usuario));
+
+    FILE *entrada = fopen(ArquivoNome,"rt");
+
+    if(entrada == NULL)
+    {
+        printf("Não foi possivel abrir este arquivo.\n");
+    }
+    
     char opcao;
-    int qnt = 0;
+
     do
     {  
         printf("====MENU====\n\n");
