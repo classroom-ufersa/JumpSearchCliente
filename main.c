@@ -30,19 +30,19 @@ int main(void)
         switch(opcao)
         {
             case '1':
-
+                VerClientes(&usuario,&QuantidadeDeAlunos);
             break;
 
             case '2':
-                //algo
+                NovoCliente(&usuario,&QuantidadeDeAlunos);
             break;
 
             case '3': 
-                //algo
+                
             break;
 
             case '4': 
-                //algo
+                
             break;
             
             case '5':
