@@ -3,23 +3,24 @@
 int main(void)
 {
     char nomedoarquivo[10] = "Lista.txt";
-    int QuantidadeDeAlunos = 0;
+    int QuantidadeDeClientes = 0;
     int ordem = 0;
 
-    ContarAlunos(nomedoarquivo,&QuantidadeDeAlunos);
+    ContarAlunos(nomedoarquivo,&QuantidadeDeClientes);
     
-    printf("quantidade: %d",QuantidadeDeAlunos);
+    printf("quantidade: %d\n",QuantidadeDeClientes);
     
-    Cliente * usuario = (Cliente*)malloc(QuantidadeDeAlunos * sizeof(usuario));
+    Cliente * usuario = (Cliente*)malloc(QuantidadeDeClientes * sizeof(usuario));
 
-
+    PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);
     
     char opcao;
     
-    { 
+    do
+    {  
         printf("====MENU====\n\n");
-        printf("1 - Adicionar cliente");
-        printf("2 - ver clientes\n");
+        printf("1 - ver clientes\n");
+        printf("2 - Adicionar um cliente novo\n");
         printf("3 - buscar cliente pelo codigo\n");
         printf("4 - buscar cliente pelo nome\n");
         printf("5 - encerrar o progama\n\n");
@@ -31,29 +32,40 @@ int main(void)
         switch(opcao)
         {
             case '1':
-
-            break;
-
-            case '2': 
-                VerClientes(&usuario, &QuantidadeDeAlunos);
-                int tecla = 0;
-                printf("Digite qualquer tecla para sair");
+                system("clear");
+                int tecla;
+                printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
-                system("clear");               
+            break;
+                system("clear");
+                int tecla;
+                printf("Digite qualquer tecla para retornar ao menu\n");
+                scanf("%d",&tecla);
+            case '2':
+                system("clear");
+                int tecla;
+                printf("Digite qualquer tecla para retornar ao menu\n");
+                scanf("%d",&tecla);
             break;
 
             case '3': 
-                
-            break;
-            
-            case '4':
-                
+                system("clear");
+                int tecla;
+                printf("Digite qualquer tecla para retornar ao menu\n");
+                scanf("%d",&tecla);
             break;
 
+            case '4': 
+                system("clear");
+                int tecla;
+                printf("Digite qualquer tecla para retornar ao menu\n");
+                scanf("%d",&tecla);
+            break;
+            
             case '5':
                 return 0;
             break;
-            
+
             default:
                 printf("Opcao invalida\n");
             break;
@@ -61,6 +73,9 @@ int main(void)
         }
 
     }while (opcao != '5');
+    
+    free(usuario);
+    printf("Progama encerrado.\n");
     
     return 0;
 }
