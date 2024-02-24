@@ -15,9 +15,9 @@
             printf("Nome: %s\n", (*usuario)[ordem].Nome);
             printf("Endereço: %s\n", (*usuario)[ordem].Endereco);
             printf("Código: %d\n", (*usuario)[ordem].CodigoCliente);
+        }
+        printf("\n");
     }
-}
-
 
     void ContarAlunos(char *nome_arquivo, int *linhas) 
     {
