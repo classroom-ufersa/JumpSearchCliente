@@ -10,9 +10,10 @@ int main(void)
     
     do
     {  
-        ContarAlunos(nomedoarquivo,&QuantidadeDeClientes);
+
+        ContarAlunos(nomedoarquivo,&QuantidadeDeClientes);//Contando quantos clientes existem na lista
         Cliente * usuario = (Cliente*)malloc(QuantidadeDeClientes * sizeof(Cliente));
-        PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);
+        PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);//Passando os dados para as variaveis usuario;
         
         printf("====MENU====\n\n");
         printf("1 - ver clientes\n");
@@ -30,7 +31,7 @@ int main(void)
             int tecla;
             case '1':
                 system("clear");
-                VerClientes(&usuario,&QuantidadeDeClientes);
+                VerClientes(&usuario,&QuantidadeDeClientes);//Mostra os clientes
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
