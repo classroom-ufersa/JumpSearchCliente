@@ -11,7 +11,7 @@ int main(void)
     do
     {  
         ContarAlunos(nomedoarquivo,&QuantidadeDeClientes);
-        Cliente * usuario = (Cliente*)malloc(QuantidadeDeClientes * sizeof(usuario));
+        Cliente * usuario = (Cliente*)malloc(QuantidadeDeClientes * sizeof(Cliente));
         PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);
         
         printf("====MENU====\n\n");
