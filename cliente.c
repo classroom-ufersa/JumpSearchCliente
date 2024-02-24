@@ -9,7 +9,7 @@
 
     void VerClientes(Cliente** usuario, int *quantidade)
     {
-        for (ordem = 0; ordem < *quantidade; ordem++)
+        for (int ordem = 0; ordem < *quantidade; ordem++)
         {
             printf("Dados\n");
             printf("Nome: %s\n", (*usuario)[ordem].Nome);
