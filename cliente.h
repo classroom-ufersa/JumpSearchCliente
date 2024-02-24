@@ -19,3 +19,6 @@ void ContarAlunos(char *nome_arquivo, int *linhas);
 
 //função criada para passar os dados do arquivo e passar para a variavel do cogigo principal;
 void PassarDados(char *nome_arquivo, Cliente** pessoa, int *quantidade);
+
+//função criada para adicionar um novo cliente;
+void AdicionarNovoCliente(char *nome_arquivo, int *quantidade);

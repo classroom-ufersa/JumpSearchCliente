@@ -35,11 +35,10 @@ int main(void)
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
-                system("clear");
-                printf("Digite qualquer tecla para retornar ao menu\n");
-                scanf("%d",&tecla);
+
             case '2':
                 system("clear");
+                AdicionarNovoCliente(nomedoarquivo, &QuantidadeDeClientes);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
