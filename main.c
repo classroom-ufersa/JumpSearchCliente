@@ -2,23 +2,24 @@
 
 int main(void)
 {
+    char nomedoarquivo[10] = "Lista.txt";
     int QuantidadeDeAlunos = 0;
-    Cliente *usuario = malloc(sizeof(usuario));
+    int ordem = 0;
 
-    FILE *entrada = fopen(ArquivoNome,"rt");
+    ContarAlunos(nomedoarquivo,&QuantidadeDeAlunos);
+    
+    printf("quantidade: %d",QuantidadeDeAlunos);
+    
+    Cliente * usuario = (Cliente*)malloc(QuantidadeDeAlunos * sizeof(usuario));
 
-    if(entrada == NULL)
-    {
-        printf("Não foi possivel abrir este arquivo.\n");
-    }
+
     
     char opcao;
-
-    do
+    
     { 
         printf("====MENU====\n\n");
-        printf("1 - ver clientes\n");
-        printf("2 - Adicionar um cliente novo\n");
+        printf("1 - Adicionar cliente");
+        printf("2 - ver clientes\n");
         printf("3 - buscar cliente pelo codigo\n");
         printf("4 - buscar cliente pelo nome\n");
         printf("5 - encerrar o progama\n\n");
@@ -30,28 +31,29 @@ int main(void)
         switch(opcao)
         {
             case '1':
-                VerClientes(&usuario,&QuantidadeDeAlunos);
+
+            break;
+
+            case '2': 
+                VerClientes(&usuario, &QuantidadeDeAlunos);
                 int tecla = 0;
                 printf("Digite qualquer tecla para sair");
                 scanf("%d",&tecla);
-            break;
-
-            case '2':
-                NovoCliente(&usuario,&QuantidadeDeAlunos);
+                system("clear");               
             break;
 
             case '3': 
                 
             break;
-
-            case '4': 
+            
+            case '4':
                 
             break;
-            
+
             case '5':
                 return 0;
             break;
-
+            
             default:
                 printf("Opcao invalida\n");
             break;

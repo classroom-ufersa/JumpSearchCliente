@@ -9,24 +9,43 @@
 
     void VerClientes(Cliente** usuario,int *quantidade)
     {
-        for(int ordem = 0; ordem < *quantidade;ordem++)
+        int ordem = 0;
+        for(ordem = 0; ordem < *quantidade; ordem++)
         {
             printf("Dados\n");
             printf("Nome: %s\n",(*usuario)[ordem].Nome);
             printf("Endereco: %s\n",(*usuario)[ordem].Endereco);
-            printf("Codigo: %d\n\n",(*usuario)[ordem].CodigoCliente);    
+            printf("Codigo: %d\n",(*usuario)[ordem].CodigoCliente);    
         }
     }
 
-    void NovoCliente(Cliente** usuario, int *quantidade)
+    void ContarAlunos(char *nome_arquivo, int *linhas) 
     {
-        *quantidade = *quantidade + 1;
-        *usuario = realloc(*usuario, (*quantidade) * sizeof(Cliente));
 
-        printf("Diga o nome do novo usuario: \n");
-        scanf("%s", (*usuario)[*quantidade].Nome);
-        printf("Endereco: \n");
-        scanf("%s", (*usuario)[*quantidade].Endereco);
-        printf("Codigo: \n");
-        scanf("%d", &(*usuario)[*quantidade].CodigoCliente);
+        FILE *arquivo = fopen(nome_arquivo, "r");
+
+        if (arquivo == NULL) 
+        {
+            printf("Erro ao abrir o arquivo: %s\n", nome_arquivo);
+            exit(1);
+        }
+       
+        else
+        {
+            printf("aquivo lido com sucesso\n");
+        }
+
+        *linhas = 0;
+
+        char verificador;
+
+        while ((verificador = fgetc(arquivo)) != EOF) 
+        {
+            if (verificador == '\n') 
+            {
+            *linhas+= 1;
+            }
+        }   
+
+        fclose(arquivo);
     }

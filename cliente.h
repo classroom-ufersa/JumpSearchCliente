@@ -14,3 +14,6 @@ void VerClientes(Cliente** usuario,int *quantidade);
 //função adicionada para adicionar um novo cliente
 void NovoCliente(Cliente** usuario,int *quantidade);
 
+//função para contar a quantidades de alunos;
+void ContarAlunos(char *nome_arquivo, int *linhas); 
+
