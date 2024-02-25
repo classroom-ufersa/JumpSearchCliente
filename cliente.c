@@ -1,4 +1,4 @@
-    #include "cliente.h"
+#include "cliente.h"
 
     struct cliente
     {
@@ -50,7 +50,7 @@
         fclose(arquivo);
     }
 
-    void PassarDados(char *nome_arquivo, Cliente** pessoa, int *quantidade) 
+    void PassarDados(char nome_arquivo, Cliente** pessoa, int *quantidade) 
     {
 
         FILE *arquivo = fopen(nome_arquivo, "rt");
@@ -68,26 +68,30 @@
 
     }
 
-    void AdicionarNovoCliente(char *nome_arquivo, int *quantidade){
-        FILE *arquivo = fopen (nome_arquivo, "a");
+    void AdicionarNovoCliente(char nome_arquivo, Cliente** usuario, int *quantidade)
+    {
+        FILE *arquivo = fopen(nome_arquivo, "at");
 
-        if(arquivo == NULL){
+        if(arquivo == NULL)
+        {
             printf("Erro ao abrir o arquivo: %s\n", nome_arquivo);
             exit(1);
         }
-        char nome[100];
-        char endereco[100];
-        int codigo;
 
-        printf("Digite seu nome:\n");
-        scanf("%s", nome);
-        printf("Digite seu endereco:\n");
-        scanf("%s", endereco);
-        printf("Digite seu Codigo:\n");
-        scanf("%d", &codigo);
-
-        fprintf(arquivo, "%s %s %d\n", nome, endereco, codigo);
         *quantidade += 1;
+        *usuario = realloc(*usuario, *quantidade * sizeof(Cliente));
+    
+     
 
+        printf("Digite o nome do usuario:\n");
+        scanf("%s", (*usuario)[*quantidade].Nome);
+        printf("Digite o endereco do usuario:\n");
+        scanf("%s", (*usuario)[*quantidade].Endereco);
+        printf("Digite o codigo do usuario:\n");
+        scanf("%d", &(*usuario)[*quantidade].CodigoCliente);
+
+        fprintf(arquivo, "%s %s %d\n", (*usuario)[*quantidade].Nome, (*usuario)[*quantidade].Endereco, (*usuario)[*quantidade].CodigoCliente);
         printf("Novo usuario adicionado!\n");
+
+        fclose(arquivo);
     }
