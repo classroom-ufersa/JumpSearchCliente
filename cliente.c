@@ -19,14 +19,14 @@
         printf("\n");
     }
 
-    void ContarAlunos(char *nome_arquivo, int *linhas) 
+    void ContarAlunos(char *NomeDoArquivo, int *linhas) 
     {
 
-        FILE *arquivo = fopen(nome_arquivo, "rt");
+        FILE *arquivo = fopen(NomeDoArquivo, "rt");
 
         if (arquivo == NULL) 
         {
-            printf("Erro ao abrir o arquivo: %s\n", nome_arquivo);
+            printf("Erro ao abrir o arquivo: %s\n", NomeDoArquivo);
             exit(1);
         }
        
@@ -50,14 +50,14 @@
         fclose(arquivo);
     }
 
-    void PassarDados(char nome_arquivo, Cliente** pessoa, int *quantidade) 
+    void PassarDados(char *NomeDoArquivo, Cliente** pessoa, int *quantidade) 
     {
 
-        FILE *arquivo = fopen(nome_arquivo, "rt");
+        FILE *arquivo = fopen(NomeDoArquivo, "rt");
 
         if (arquivo == NULL) 
         {
-            printf("Erro ao abrir o arquivo: %s\n", nome_arquivo);
+            printf("Erro ao abrir o arquivo: %s\n", NomeDoArquivo);
             exit(1);
         }
 
@@ -68,13 +68,13 @@
 
     }
 
-    void AdicionarNovoCliente(char nome_arquivo, Cliente** usuario, int *quantidade)
+    void AdicionarNovoCliente(char *NomeDoArquivo, Cliente** usuario, int *quantidade)
     {
-        FILE *arquivo = fopen(nome_arquivo, "at");
+        FILE *arquivo = fopen(NomeDoArquivo, "at");
 
         if(arquivo == NULL)
         {
-            printf("Erro ao abrir o arquivo: %s\n", nome_arquivo);
+            printf("Erro ao abrir o arquivo: %s\n", NomeDoArquivo);
             exit(1);
         }
 
