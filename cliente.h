@@ -22,3 +22,6 @@ void PassarDados(char *NomeDoArquivo, Cliente** pessoa, int *quantidade);
 
 //função criada para adicionar um novo cliente;
 void AdicionarNovoCliente(char *NomeDoArquivo, Cliente** usuario, int *quantidade);
+
+//função criada para buscar os ususarios pelo codigo, esta função utiliza o algoritmo de busca jumpsearch;
+int jumpSearch(Cliente** usuarios, int *n, int *codigo);

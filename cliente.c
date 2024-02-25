@@ -95,3 +95,38 @@
 
         fclose(arquivo);
     }
+
+    int jumpSearch(Cliente** usuarios, int *QuantidadeDeCliente, int *codigo) 
+    {
+        
+        int posicaoAtual = 0;
+        int salto = sqrt(*QuantidadeDeCliente);//definindo o tamanho dos saltos com a raiz quadrada do numero;
+        
+        while (posicaoAtual < *QuantidadeDeCliente)// Percorrer o array com saltos 
+        {
+            if ((*usuarios)[posicaoAtual].CodigoCliente < *codigo)// Se o código do usuário for menor que o código na posição atual, pular 
+            {
+                posicaoAtual += salto;
+            } 
+            else    
+            {
+                break;
+            }
+        }
+
+        if (posicaoAtual >= *codigo)// Se a posição atual ultrapassou o limite do array, retornar -1
+        {
+            return -400;
+        }
+        
+        for (int PosicaoLinear = posicaoAtual - salto; PosicaoLinear < *QuantidadeDeCliente; PosicaoLinear++)// Busca linear no bloco atual 
+        {
+            if ((*usuarios)[PosicaoLinear].CodigoCliente == *codigo) 
+            {
+                return PosicaoLinear;
+            }
+        }
+
+        return -1000;// Retornar -1 se o código não for encontrado
+
+    }
