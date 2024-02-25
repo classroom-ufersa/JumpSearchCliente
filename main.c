@@ -5,7 +5,7 @@ int main(void)
     char nomedoarquivo[10] = "Lista.txt";
     int QuantidadeDeClientes = 0;
     int ordem = 0;
-    
+
     char opcao;
     
     do
@@ -15,6 +15,7 @@ int main(void)
         Cliente * usuario = (Cliente*)malloc(QuantidadeDeClientes * sizeof(Cliente));
         PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);//Passando os dados para as variaveis usuario;
         
+        printf("QUANTIDADE DE CLIENTES DENTRO DO PROGAMA: %d\n\n",QuantidadeDeClientes);
         printf("====MENU====\n\n");
         printf("1 - ver clientes\n");
         printf("2 - Adicionar um cliente novo\n");
@@ -35,11 +36,10 @@ int main(void)
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
-                system("clear");
-                printf("Digite qualquer tecla para retornar ao menu\n");
-                scanf("%d",&tecla);
+
             case '2':
                 system("clear");
+                AdicionarNovoCliente(nomedoarquivo, &usuario, &QuantidadeDeClientes);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
@@ -58,6 +58,7 @@ int main(void)
             
             case '5':
                 printf("\n");
+                free(usuario);
             break;
 
             default:
@@ -65,11 +66,10 @@ int main(void)
             break;
         
         }
-
+    
     }while (opcao != '5');
     
     printf("Progama encerrado com sucesso!\n");
     
     return 0;
 }
-
