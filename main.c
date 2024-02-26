@@ -11,7 +11,7 @@ int main(void)
     do
     {  
 
-        ContarAlunos(nomedoarquivo,&QuantidadeDeClientes);//Contando quantos clientes existem na lista
+        ContarCliente(nomedoarquivo,&QuantidadeDeClientes);//Contando quantos clientes existem na lista
         Cliente * usuario = (Cliente*)malloc(QuantidadeDeClientes * sizeof(Cliente));
         PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);//Passando os dados para as variaveis usuario;
         
@@ -49,14 +49,19 @@ int main(void)
                 int codigo = 0;
                 printf("Qual cliente voce dejesa buscar?\n");
                 scanf("%d",&codigo);
-                int posicao = JumpSearchCod(&usuario, &QuantidadeDeClientes, &codigo);
-                VerificaBusca(&usuario,&codigo,&posicao);
+                int posicaocod = JumpSearchCod(&usuario, &QuantidadeDeClientes, &codigo);
+                VerificaBuscaCod(&usuario,&codigo,&posicaocod);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
 
             case '4': 
                 system("clear");
+                char nome[30];
+                printf("Digite seu nome:\n");
+                scanf("%s",nome);
+                int posicaoname = jumpSearchNome(&usuario, &QuantidadeDeClientes, nome);
+                VerificaBuscaNome(&usuario,&posicaoname);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;

@@ -15,8 +15,8 @@ void VerClientes(Cliente** usuario,int *quantidade);
 //função adicionada para adicionar um novo cliente
 void NovoCliente(Cliente** usuario,int *quantidade);
 
-//função para contar a quantidades de alunos;
-void ContarAlunos(char *NomeDoArquivo, int *linhas); 
+//função para contar a quantidades de Clientes;
+void ContarCliente(char *NomeDoArquivo, int *linhas); 
 
 //função criada para passar os dados do arquivo e passar para a variavel do cogigo principal;
 void PassarDados(char *NomeDoArquivo, Cliente** pessoa, int *quantidade);
@@ -28,4 +28,13 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente** usuario, int *quantidad
 int JumpSearchCod(Cliente** usuarios, int *n, int *codigo);
 
 //função criada para verificar o resuldado da busca jumpsearch por codigo;
-void VerificaBusca(Cliente** usuario, int *codigo, int *retorno);
+void VerificaBuscaCod(Cliente **usuario, int *codigo, int *retorno);
+
+//função criada para verificar o resuldado da busca jumpsearch por nome;
+void VerificaBuscaNome(Cliente **usuario, int *retorno);
+
+//função auxiliar para ordenar pelo codigo;
+int comparar_codigo(const void *a, const void *b);
+
+//função auxiliar para ordenar pelo nome;
+int comparar_nome(const void *a, const void *b);
