@@ -71,6 +71,8 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
 {
     FILE *arquivo = fopen(NomeDoArquivo, "at");
 
+    Cliente verifica;
+    
     if (arquivo == NULL)
     {
         printf("Erro ao abrir o arquivo: %s\n", NomeDoArquivo);
@@ -81,12 +83,37 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
     *usuario = realloc(*usuario, *quantidade * sizeof(Cliente));
 
     printf("Digite o nome do usuario:\n");
-    scanf("%s", (*usuario)[*quantidade].Nome);
+    scanf("%s", verifica.Nome);
+    for(int ordem = 0; ordem < *quantidade;ordem ++)
+    {
+        if(strcmp((*usuario)[ordem].Nome, verifica.Nome) == 0)
+        {
+            while(strcmp((*usuario)[ordem].Nome, verifica.Nome) == 0)
+            {
+                printf("Esse nome ja foi digitado, tente outro nome!\nNome:");
+                scanf("%s",verifica.Nome);
+                printf("\n");
+            }
+        }
+    }
+    strcpy((*usuario)[*quantidade].Nome, verifica.Nome);
     printf("Digite o endereco do usuario:\n");
     scanf("%s", (*usuario)[*quantidade].Endereco);
     printf("Digite o codigo do usuario:\n");
-    scanf("%d", &(*usuario)[*quantidade].CodigoCliente);
-
+    scanf("%d", &verifica.CodigoCliente);
+    for(int ordem = 0; ordem < *quantidade;ordem ++)
+    {
+        if((*usuario)[ordem].CodigoCliente == verifica.CodigoCliente)
+        {
+            while((*usuario)[ordem].CodigoCliente == verifica.CodigoCliente)
+            {
+                printf("Esse codigo ja foi digitado, tente outro codigo!\ncodigo:");
+                scanf("%d",&verifica.CodigoCliente);
+                printf("\n");
+            }
+        }
+    }
+    (*usuario)[*quantidade].CodigoCliente = verifica.CodigoCliente;
     fprintf(arquivo, "\n%s %s %d", (*usuario)[*quantidade].Nome, (*usuario)[*quantidade].Endereco, (*usuario)[*quantidade].CodigoCliente);
     printf("Novo usuario adicionado!\n");
 
@@ -97,11 +124,13 @@ int JumpSearchCod(Cliente **usuarios, int *QuantidadeDeCliente, int *codigo)
 {
 
     int posicaoAtual = 0;
-    int salto = sqrt(*QuantidadeDeCliente); // definindo o tamanho dos saltos com a raiz quadrada do numero;
-    qsort((*usuarios), *QuantidadeDeCliente, sizeof(Cliente), comparar_codigo);
-    while (posicaoAtual < *QuantidadeDeCliente) // Percorrer o array com saltos
+    int salto = sqrt(*QuantidadeDeCliente); //N1 - função dominante n^1/2 -> raiz quadrada;
+    
+    qsort((*usuarios), *QuantidadeDeCliente, sizeof(Cliente), comparar_codigo); 
+    
+    while (posicaoAtual < *QuantidadeDeCliente) //N2 -N(o);
     {
-        if ((*usuarios)[posicaoAtual].CodigoCliente < *codigo) // Se o código do usuário for menor que o código na posição atual, pular
+        if ((*usuarios)[posicaoAtual].CodigoCliente < *codigo)
         {
             posicaoAtual += salto;
         }
@@ -111,7 +140,7 @@ int JumpSearchCod(Cliente **usuarios, int *QuantidadeDeCliente, int *codigo)
         }
     }
 
-    for (int PosicaoLinear = posicaoAtual - salto; PosicaoLinear < *QuantidadeDeCliente; PosicaoLinear++) // Busca linear no bloco atual
+    for (int PosicaoLinear = posicaoAtual - salto; PosicaoLinear < *QuantidadeDeCliente; PosicaoLinear++) //N3 -N(o);
     {
         if ((*usuarios)[PosicaoLinear].CodigoCliente == *codigo)
         {
@@ -119,24 +148,24 @@ int JumpSearchCod(Cliente **usuarios, int *QuantidadeDeCliente, int *codigo)
         }
     }
 
-    return -1; // Retornar -1 se o código não for encontrado
+    return -1; 
 }
 
 int jumpSearchNome(Cliente** cliente, int *QuantidadeDeClientes, char *nome)
 {
-    int salto = sqrt(*QuantidadeDeClientes);
+    int salto = sqrt(*QuantidadeDeClientes);//N1 - função dominante n^1/2 -> raiz quadrada;
     int i = 0, j = 0;
 
     qsort((*cliente), *QuantidadeDeClientes, sizeof(Cliente), comparar_nome);
 
-    while (i < *QuantidadeDeClientes && strcmp((*cliente)[i].Nome, nome) < 0)
+    while (i < *QuantidadeDeClientes && strcmp((*cliente)[i].Nome, nome) < 0)//N2  -N(o);
     {
         i += salto;
     }
     if (i >= *QuantidadeDeClientes || strcmp((*cliente)[i].Nome, nome) > 0)
     {
         i -= salto;
-        for (j = i; j < i + salto && j < *QuantidadeDeClientes; j++)
+        for (j = i; j < i + salto && j < *QuantidadeDeClientes; j++)//N3 -N(o);
         {
             if (strcmp((*cliente)[j].Nome, nome) == 0)
             {

@@ -9,13 +9,14 @@ int main(void)
     double tempo;
 
     char opcao;
+    char verificarOpcao[50];
     
     do
     {  
 
-        ContarCliente(nomedoarquivo,&QuantidadeDeClientes);//Contando quantos clientes existem na lista
+        ContarCliente(nomedoarquivo,&QuantidadeDeClientes);
         Cliente * usuario = (Cliente*)malloc(QuantidadeDeClientes * sizeof(Cliente));
-        PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);//Passando os dados para as variaveis usuario;
+        PassarDados(nomedoarquivo,&usuario,&QuantidadeDeClientes);
         
         printf("QUANTIDADE DE CLIENTES DENTRO DO PROGAMA: %d\n\n",QuantidadeDeClientes);
         printf("====MENU====\n\n");
@@ -27,14 +28,16 @@ int main(void)
         printf("============\n");
        
         printf("Opcao: ");
-        scanf(" %c",&opcao);
+        scanf(" %s", verificarOpcao);
+
+        opcao = verificarOpcao[0];
 
         switch(opcao)
         {
             int tecla;
             case '1':
                 system("clear");
-                VerClientes(&usuario,&QuantidadeDeClientes);//Mostra os clientes
+                VerClientes(&usuario,&QuantidadeDeClientes);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
@@ -54,7 +57,7 @@ int main(void)
                 inicio = clock();
                 int posicaocod = JumpSearchCod(&usuario, &QuantidadeDeClientes, &codigo);
                 tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
-                tempo = tempo * 1000; // Milisegundos
+                tempo = tempo * 1000; 
                 printf("Tempo de execucao: %.1f Milisegundos\n", tempo);
                 VerificaBuscaCod(&usuario,&codigo,&posicaocod);
                 printf("Digite qualquer tecla para retornar ao menu\n");
@@ -69,7 +72,7 @@ int main(void)
                 inicio = clock();
                 int posicaoname = jumpSearchNome(&usuario, &QuantidadeDeClientes, nome);
                 tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
-                tempo = tempo * 1000; // Milisegundos
+                tempo = tempo * 1000; 
                 printf("Tempo de execucao: %.1f Milisegundos\n", tempo);
                 VerificaBuscaNome(&usuario,&posicaoname);
                 printf("Digite qualquer tecla para retornar ao menu\n");
