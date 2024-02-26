@@ -1,5 +1,8 @@
 <h1 align="center">Grupo 05: Busca de clientes com Jump Search</h1>
 
+## Doscente da turma
+- [Rosana Cibely Batista Rego](https://github.com/roscibely)
+
 ## Componentes da equipe
 - [Éverson Alisson Queiroz Silva](https://github.com/Everson-Alisson)
 - [Francisco Lailson de Almeida](https://github.com/lailsonzw)
@@ -7,11 +10,11 @@
 - [Tobias Fernandes Figueiredo](https://github.com/Tobias-fernandes)
 
 
-### Linguagem utilizada
+## Linguagem utilizada
 
 ![C](https://img.shields.io/badge/C-007ACC?style=for-the-badge&logo=C&logoColor=white)&nbsp;
 
-## Sobre o projeto
+### Sobre o projeto
 
 Implemente um algoritmo que manipula um tipo estruturado Clientes e possui a funcionalidade de buscar clientes em um arquivo.
 
@@ -26,7 +29,7 @@ Requisitos
   - Compute o tempo de execução do processo de busca;
   - Informe a complexidade do algoritmo Jump Search;
 
-## O que seria o Jump Search
+### O que seria o Jump Search
 
 O jump search é basicamente um algoritmo de busca eficiente para encontrar um determinado elemento em um array que está ordenado.
 
@@ -34,7 +37,7 @@ Também conhecido como Pesquisa por Salto, ele é chamado assim pois ao invés d
 
 Permitindo, assim, que seja encontrado um elemento dentro de um array realizando um número menor de comparações do que em uma busca simples.
 
-## Quais as etapas desse algoritmo
+### Quais as etapas desse algoritmo
 
   - 1-  A pesquisa sempre começa no início do array.
   - 2-  Defina o tamanho do salto:
@@ -42,3 +45,11 @@ Permitindo, assim, que seja encontrado um elemento dentro de um array realizando
   - 3-  Compare os elementos com o valor desejado: Caso o valor desejado for igual ao valor lido ma posição do array, a pesquisa terminará e o valor será encontrado.
   - 4-  Calcule a próxima posição de salto: Se o elemento na posição atual não for igual ao valor desejado, algoritmo calcula a próxima posição de salto usando o tamanho do salto.
   - 5-  Caso o valor na posição atual do array for maior do que o valor que está sendo procurado, o algoritmo volta à posição do salto anterior e começa uma busca linear no array.
+
+### Vantagens
+ - Mais eficiente que a busca linear: O Jump Search é mais eficiente que a busca linear, pois realiza menos comparações em média.
+ - Menos eficiente que a busca binária: O Jump Search é menos eficiente que a busca binária, mas é mais fácil de implementar.
+ 
+### Desvantagens
+ - Menos eficiente que a busca binária: O Jump Search é menos eficiente que a busca binária, especialmente para arrays grandes.
+ - Pior caso: O pior caso do Jump Search é O(n), o mesmo que a busca linear.
