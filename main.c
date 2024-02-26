@@ -5,6 +5,8 @@ int main(void)
     char nomedoarquivo[10] = "Lista.txt";
     int QuantidadeDeClientes = 0;
     int ordem = 0;
+    clock_t inicio;
+    double tempo;
 
     char opcao;
     
@@ -49,7 +51,11 @@ int main(void)
                 int codigo = 0;
                 printf("Qual cliente voce dejesa buscar?\n");
                 scanf("%d",&codigo);
+                inicio = clock();
                 int posicaocod = JumpSearchCod(&usuario, &QuantidadeDeClientes, &codigo);
+                tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
+                tempo = tempo * 1000; // Milisegundos
+                printf("Tempo de execucao: %.1f Milisegundos\n", tempo);
                 VerificaBuscaCod(&usuario,&codigo,&posicaocod);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
@@ -60,7 +66,11 @@ int main(void)
                 char nome[30];
                 printf("Digite seu nome:\n");
                 scanf("%s",nome);
+                inicio = clock();
                 int posicaoname = jumpSearchNome(&usuario, &QuantidadeDeClientes, nome);
+                tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
+                tempo = tempo * 1000; // Milisegundos
+                printf("Tempo de execucao: %.1f Milisegundos\n", tempo);
                 VerificaBuscaNome(&usuario,&posicaoname);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
