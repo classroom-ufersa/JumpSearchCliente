@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <time.h>
 
 #define ArquivoNome "Lista.txt"
 
@@ -22,3 +23,9 @@ void PassarDados(char *NomeDoArquivo, Cliente** pessoa, int *quantidade);
 
 //função criada para adicionar um novo cliente;
 void AdicionarNovoCliente(char *NomeDoArquivo, Cliente** usuario, int *quantidade);
+
+//função criada para buscar os ususarios pelo codigo, esta função utiliza o algoritmo de busca jumpsearch;
+int JumpSearchCod(Cliente** usuarios, int *n, int *codigo);
+
+//função criada para verificar o resuldado da busca jumpsearch por codigo;
+void VerificaBusca(Cliente** usuario, int *codigo, int *retorno);

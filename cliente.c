@@ -95,3 +95,44 @@
 
         fclose(arquivo);
     }
+
+    int JumpSearchCod(Cliente** usuarios, int *QuantidadeDeCliente, int *codigo) 
+    {
+        
+        int posicaoAtual = 0;
+        int salto = sqrt(*QuantidadeDeCliente);//definindo o tamanho dos saltos com a raiz quadrada do numero;
+        
+        while (posicaoAtual < *QuantidadeDeCliente)// Percorrer o array com saltos 
+        {
+            if ((*usuarios)[posicaoAtual].CodigoCliente < *codigo)// Se o código do usuário for menor que o código na posição atual, pular 
+            {
+                posicaoAtual += salto;
+            } 
+            else    
+            {
+                break;
+            }
+        }
+        
+        for (int PosicaoLinear = posicaoAtual - salto; PosicaoLinear < *QuantidadeDeCliente; PosicaoLinear++)// Busca linear no bloco atual 
+        {
+            if ((*usuarios)[PosicaoLinear].CodigoCliente == *codigo) 
+            {
+                return PosicaoLinear;
+            }
+        }
+
+        return -1;// Retornar -1 se o código não for encontrado
+    }
+
+    void VerificaBusca(Cliente** usuario, int *codigo, int *retorno)
+    {
+        if(*retorno == -1)
+        { 
+            printf("Nao foi possivel encontrar o cliente");
+        }
+        else
+        {
+            printf("O usuario do codigo %d esta na posicao %d\nSeu nome e %s\n",*codigo, *retorno + 1,(*usuario)[*retorno].Nome);
+        }
+    }

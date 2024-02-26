@@ -46,6 +46,11 @@ int main(void)
 
             case '3': 
                 system("clear");
+                int codigo = 0;
+                printf("Qual cliente voce dejesa buscar?\n");
+                scanf("%d",&codigo);
+                int posicao = JumpSearchCod(&usuario, &QuantidadeDeClientes, &codigo);
+                VerificaBusca(&usuario,&codigo,&posicao);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
