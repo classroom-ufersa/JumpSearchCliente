@@ -49,9 +49,8 @@ int main(void)
                 int codigo = 0;
                 printf("Qual cliente voce dejesa buscar?\n");
                 scanf("%d",&codigo);
-                int posicao = jumpSearch(&usuario, &QuantidadeDeClientes, &codigo);
-                printf("O usuario do codigo %d esta na posicao %d\n",codigo, posicao);
-                printf("Seu nome e %s\n",usuario[posicao].Nome);
+                int posicao = JumpSearchCod(&usuario, &QuantidadeDeClientes, &codigo);
+                VerificaBusca(&usuario,&codigo,&posicao);
                 printf("Digite qualquer tecla para retornar ao menu\n");
                 scanf("%d",&tecla);
             break;
