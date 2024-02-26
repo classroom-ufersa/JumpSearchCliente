@@ -53,3 +53,16 @@ Permitindo, assim, que seja encontrado um elemento dentro de um array realizando
 ### Desvantagens
  - Menos eficiente que a busca binária: O Jump Search é menos eficiente que a busca binária, especialmente para arrays grandes.
  - Pior caso: O pior caso do Jump Search é O(n), o mesmo que a busca linear.
+
+### Implementação
+
+  - Pesquisa por código:
+
+    
+    <img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-codigo.png" />
+
+
+  - Pesquisa por nome:
+
+    
+    <img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-nome.png" />
