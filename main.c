@@ -9,6 +9,7 @@ int main(void)
     double tempo;
 
     char opcao;
+    char verificarOpcao[50];
     
     do
     {  
@@ -27,7 +28,9 @@ int main(void)
         printf("============\n");
        
         printf("Opcao: ");
-        scanf(" %c",&opcao);
+        scanf(" %s", verificarOpcao);
+
+        opcao = verificarOpcao[0];
 
         switch(opcao)
         {
