@@ -13,9 +13,6 @@ typedef struct cliente Cliente;
 //função criada para mostrar os usuarios cadastrados;
 void VerClientes(Cliente** usuario,int *quantidade);
 
-//função adicionada para adicionar um novo cliente
-void NovoCliente(Cliente** usuario,int *quantidade);
-
 //função para contar a quantidades de Clientes;
 void ContarCliente(char *NomeDoArquivo, int *linhas); 
 
