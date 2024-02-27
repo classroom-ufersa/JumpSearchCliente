@@ -37,6 +37,9 @@ Também conhecido como Pesquisa por Salto, ele é chamado assim pois ao invés d
 
 Permitindo, assim, que seja encontrado um elemento dentro de um array realizando um número menor de comparações do que em uma busca simples.
 
+<img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-codigo.png" />
+
+
 ### Quais as etapas desse algoritmo
 
   - 1-  A pesquisa sempre começa no início do array.
@@ -54,15 +57,74 @@ Permitindo, assim, que seja encontrado um elemento dentro de um array realizando
  - Menos eficiente que a busca binária: O Jump Search é menos eficiente que a busca binária, especialmente para arrays grandes.
  - Pior caso: O pior caso do Jump Search é O(n), o mesmo que a busca linear.
 
-### Implementação
+## Implementação
 
-  - Pesquisa por código:
-
-    
-    <img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-codigo.png" />
-
-
-  - Pesquisa por nome:
+  ## Pesquisa por código:
 
     
-    <img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-nome.png" />
+  <img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-codigo.png" />
+    
+  #### Declaração de variáveis:
+
+  usuarios: Array que armazena os dados dos usuários.
+  n: Tamanho do array "usuarios".
+  salto: Tamanho do salto a ser utilizado na busca.
+  codigo: Código do usuário que está sendo buscado.
+  posicao: Posição do usuário encontrado no array.
+
+  #### Cálculo do salto:
+
+  A variável "salto" é calculada como a raiz quadrada do tamanho do array "usuarios" (n). Essa fórmula garante um bom     equilíbrio entre a eficiência da busca e a simplicidade do código.
+
+  #### Busca usando loop while:
+
+  Um loop while é usado para percorrer o array "usuarios" de forma eficiente.
+  A condição do loop verifica se a posição atual (posicao) é menor que o código desejado (codigo).
+  Se a condição for verdadeira, o loop realiza as seguintes ações:
+  A variável "posicao" é incrementada em "salto".
+  Se a nova posição for maior que o tamanho do array, o loop é encerrado.
+
+  #### Busca linear:
+
+  Se o loop while não encontrar o código desejado, uma busca linear é realizada para verificar se o código está presente em     algum dos elementos restantes do array.
+  A busca linear percorre o array elemento por elemento, comparando o código de cada elemento com o código desejado.
+  
+  #### Retorno do resultado:
+
+  Se o código for encontrado, a função retorna a posição do elemento encontrado no array.
+  Se o código não for encontrado, a função retorna -1.
+
+  ## Pesquisa por nome:
+
+    
+<img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-nome.png" />
+
+  #### Parâmetros:
+
+  cliente: Ponteiro para um array de structs do tipo Cliente.
+  QuantidadeDeClientes: Ponteiro para um inteiro que armazena o número de clientes no array.
+  nome: Ponteiro para uma string que armazena o nome do cliente que está sendo buscado.
+  Funcionamento:
+
+  #### Cálculo do salto: 
+
+  A função calcula o tamanho do salto a ser utilizado na busca como a raiz quadrada do número de clientes (QuantidadeDeClientes).
+
+  #### Ordenação do array: 
+
+  A função ordena o array de clientes por nome usando a função qsort. Essa ordenação é necessária para que a busca binária funcione corretamente.
+
+  #### Busca binária: 
+
+  A função realiza uma busca binária no array ordenado para encontrar o cliente com o nome especificado.
+
+  A busca binária compara o nome do cliente com o nome do cliente no meio do array.
+  Se o nome do cliente for menor que o nome do cliente no meio do array, a busca continua na metade inferior do array.
+  Se o nome do cliente for maior que o nome do cliente no meio do array, a busca continua na metade superior do array.
+  A busca continua até que o cliente seja encontrado ou que se determine que o cliente não existe no array.
+
+  #### Retorno do resultado:
+
+  Se o cliente for encontrado, a função retorna a posição do cliente no array.
+  Se o cliente não for encontrado, a função retorna -1.
+
