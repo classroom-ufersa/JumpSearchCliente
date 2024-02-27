@@ -37,7 +37,7 @@ Também conhecido como Pesquisa por Salto, ele é chamado assim pois ao invés d
 
 Permitindo, assim, que seja encontrado um elemento dentro de um array realizando um número menor de comparações do que em uma busca simples.
 
-<img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/JSC-codigo.png" />
+<img src="https://github.com/classroom-ufersa/JumpSearchCliente/blob/main/assets/image3.png" />
 
 
 ### Quais as etapas desse algoritmo
