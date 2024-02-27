@@ -3,6 +3,7 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
 
 #define ArquivoNome "Lista.txt"
 

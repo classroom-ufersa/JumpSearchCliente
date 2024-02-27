@@ -71,8 +71,10 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
 {
     FILE *arquivo = fopen(NomeDoArquivo, "at");
 
-    Cliente verifica;
-    
+    char verifica_char[30];
+    int resultado = 0;
+    int verifica_inteiro;
+
     if (arquivo == NULL)
     {
         printf("Erro ao abrir o arquivo: %s\n", NomeDoArquivo);
@@ -83,37 +85,58 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
     *usuario = realloc(*usuario, *quantidade * sizeof(Cliente));
 
     printf("Digite o nome do usuario:\n");
-    scanf("%s", verifica.Nome);
+    scanf("%s", verifica_char);
+   
+    while (resultado != 1){
+        
+        for (int ordem = 0; ordem < strlen(verifica_char); ordem++) 
+        {
+            if (isdigit(verifica_char[ordem])) 
+            {
+                resultado = 1;
+                break;
+            }
+        }
+
+        if (resultado == 1) 
+        {
+            printf("Erro, voce inseriu um numero inteiro no nome!\n");
+            printf("Digite o nome novamente!\n");
+            scanf("%s", verifica_char);
+        } 
+
+    }
+
     for(int ordem = 0; ordem < *quantidade;ordem ++)
     {
-        if(strcmp((*usuario)[ordem].Nome, verifica.Nome) == 0)
+        if(strcmp((*usuario)[ordem].Nome, verifica_char) == 0)
         {
-            while(strcmp((*usuario)[ordem].Nome, verifica.Nome) == 0)
+            while(strcmp((*usuario)[ordem].Nome, verifica_char) == 0)
             {
                 printf("Esse nome ja foi digitado, tente outro nome!\nNome:");
-                scanf("%s",verifica.Nome);
+                scanf("%s",verifica_char);
                 printf("\n");
             }
         }
     }
-    strcpy((*usuario)[*quantidade].Nome, verifica.Nome);
+    strcpy((*usuario)[*quantidade].Nome, verifica_char);
     printf("Digite o endereco do usuario:\n");
     scanf("%s", (*usuario)[*quantidade].Endereco);
     printf("Digite o codigo do usuario:\n");
-    scanf("%d", &verifica.CodigoCliente);
+    scanf("%d", &verifica_inteiro);
     for(int ordem = 0; ordem < *quantidade;ordem ++)
     {
-        if((*usuario)[ordem].CodigoCliente == verifica.CodigoCliente)
+        if((*usuario)[ordem].CodigoCliente == verifica_inteiro)
         {
-            while((*usuario)[ordem].CodigoCliente == verifica.CodigoCliente)
+            while((*usuario)[ordem].CodigoCliente == verifica_inteiro)
             {
                 printf("Esse codigo ja foi digitado, tente outro codigo!\ncodigo:");
-                scanf("%d",&verifica.CodigoCliente);
+                scanf("%d",&verifica_inteiro);
                 printf("\n");
             }
         }
     }
-    (*usuario)[*quantidade].CodigoCliente = verifica.CodigoCliente;
+    (*usuario)[*quantidade].CodigoCliente = verifica_inteiro;
     fprintf(arquivo, "\n%s %s %d", (*usuario)[*quantidade].Nome, (*usuario)[*quantidade].Endereco, (*usuario)[*quantidade].CodigoCliente);
     printf("Novo usuario adicionado!\n");
 
