@@ -87,7 +87,7 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
     printf("Digite o nome do usuario:\n");
     scanf("%s", verifica_char);
    
-    while (resultado != 1){
+    do{
         
         for (int ordem = 0; ordem < strlen(verifica_char); ordem++) 
         {
@@ -95,6 +95,10 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
             {
                 resultado = 1;
                 break;
+            }
+            else
+            {
+                resultado = 2;
             }
         }
 
@@ -105,7 +109,7 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
             scanf("%s", verifica_char);
         } 
 
-    }
+    }while (resultado == 1);
 
     for(int ordem = 0; ordem < *quantidade;ordem ++)
     {
