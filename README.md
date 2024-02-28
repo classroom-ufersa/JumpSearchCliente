@@ -128,6 +128,97 @@ Permitindo, assim, que seja encontrado um elemento dentro de um array realizando
   Se o cliente for encontrado, a função retorna a posição do cliente no array.
   Se o cliente não for encontrado, a função retorna -1.
 
+## Análise de complexidade por nome
+  ```c
+int jumpSearchNome(Cliente** cliente, int QuantidadeDeClientes, charnome)
+{
+    int salto = sqrt(QuantidadeDeClientes);//c1 -  1 vez
+    int i = 0, j = 0;//c2 -  1 vez
+
+    qsort((cliente), QuantidadeDeClientes, sizeof(Cliente), comparar_nome); //c3 -  1 vez
+
+    while (i <QuantidadeDeClientes && strcmp((cliente)[i].Nome, nome) < 0)//c4 - sqrt N
+    {
+        i += salto; //c5 - sqrt N
+    }
+    if (i >=QuantidadeDeClientes || strcmp((cliente)[i].Nome, nome) > 0)
+    {
+        i -= salto; //c6 - 1 vez
+        for (j = i; j < i + salto && j <QuantidadeDeClientes; j++) //c7 -  1 vez
+        {
+            if (strcmp((cliente)[j].Nome, nome) == 0)
+            {
+                return j; //c8 - sqrt N;
+            }
+        }
+        return -1; //c9 - sqrt N;
+    }
+    else if (strcmp((cliente)[i].Nome, nome) == 0)
+    {
+        return i; //c10 - 1 vez
+    }
+    return -1;//c11 -  1 vez
+}
+  ```
+
+## Análise complexidade de tempo por código
+  ```c
+int JumpSearchCod(Cliente *usuarios, intQuantidadeDeCliente, int codigo) {
+
+    int posicaoAtual = 0; //C1 - 1 vez
+    int salto = sqrt(QuantidadeDeCliente); //C2 - 1 vez
+
+    qsort((usuarios),QuantidadeDeCliente, sizeof(Cliente), comparar_codigo); //C3 - 1 vez
+
+    while (posicaoAtual < QuantidadeDeCliente) { //C4 - √n
+        if ((usuarios)[posicaoAtual].CodigoCliente < codigo)  { //C5 - √n
+            posicaoAtual += salto; //C6 - √n
+        } else {
+            break;//C6 - 1 vez
+        }
+    }
+
+
+    for (int PosicaoLinear = posicaoAtual - salto; PosicaoLinear <QuantidadeDeCliente; PosicaoLinear++) { // C7 - √n
+        if ((usuarios)[PosicaoLinear].CodigoCliente ==codigo) { //C8 - √n
+            return PosicaoLinear;//C9 - 1 vez
+        } 
+    }
+
+    return -1; //C10 - 1 vez
+}
+  ```
+## Resultado da análise de tempo
+```c
+/*
+    Quantidade de alunos = Pior caso e médio caso
+    T(n) = (c1 + c2 + c5+ c6+ c9 + c10) + (c3 + c4 + c7 + c8)√n
+    T(n) = a + b√n
+    T(n) = b√n
+
+    ou seja: O(√n)
+    /
+
+
+    /
+    Quantidade de alunos = Pior caso
+    T(n) = (c1 + c2 + c5+ c6+ c9 + c10) 
+    T(n) = a
+    T(n) = 1
+
+    ou seja: O(1)
+    */
+```
+
+## Análise de complexidade de espaço
+
+O algoritmo de busca por salto usa apenas um número constante de variáveis ​​para armazenar informações durante a execução, independentemente do tamanho do conjunto de dados que está sendo pesquisado. As principais variáveis ​​usadas são:
+
+Índice atual: Armazena a posição atual do algoritmo no conjunto de dados.
+Valor de salto: Determina o tamanho do próximo salto que o algoritmo dará.
+Valor alvo: O valor que o algoritmo está procurando.
+Como o número de variáveis ​​permanece constante independentemente do tamanho do conjunto de dados, a complexidade de espaço do algoritmo é considerada constante.
+
 ## Conclusão
 Após desenvolver o algoritmo para busca de clientes por nome ou código utilizando o método Jump Search, podemos concluir que esta abordagem oferece uma maneira eficiente de localizar informações em grandes conjuntos de dados. 
 
