@@ -128,3 +128,11 @@ Permitindo, assim, que seja encontrado um elemento dentro de um array realizando
   Se o cliente for encontrado, a função retorna a posição do cliente no array.
   Se o cliente não for encontrado, a função retorna -1.
 
+## Conclusão
+Após desenvolver o algoritmo para busca de clientes por nome ou código utilizando o método Jump Search, podemos concluir que esta abordagem oferece uma maneira eficiente de localizar informações em grandes conjuntos de dados. 
+
+Durante a execução do programa, pudemos observar que o tempo necessário para encontrar o cliente desejado foi relativamente rápido, mesmo em arquivos de tamanho considerável. Isso demonstra a eficácia do algoritmo Jump Search em otimizar o processo de busca, resultando em uma experiência mais ágil para o usuário.
+
+Ao analisar a complexidade do algoritmo, percebemos que o Jump Search possui uma complexidade de tempo de O(√n), onde 'n' é o número de elementos no arquivo de clientes. Isso significa que, apesar de não ser tão eficiente quanto algoritmos de busca como o Binary Search (O(log n)), o Jump Search ainda oferece um desempenho bastante satisfatório, especialmente em conjuntos de dados não ordenados.
+
+Em suma, a implementação do algoritmo Jump Search nos permitiu criar um programa capaz de buscar clientes de forma rápida e eficiente, proporcionando uma experiência mais fluida ao usuário durante a utilização do sistema.
