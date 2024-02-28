@@ -122,11 +122,6 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
             printf("Erro, voce inseriu um caracter especial no nome!\nDigite o nome novamente: ");
             scanf("%s",verifica_char);
         }
-        else
-        {
-            printf("Erro, Parece que voce inseriu nome e caracter!\nDigite o nome novamente: ");
-            scanf("%s",verifica_char);
-        }
     }while (resultado == 1 || resultado == 2);
 
     for(int ordem = 0; ordem < *quantidade;ordem ++)
