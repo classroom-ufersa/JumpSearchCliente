@@ -101,20 +101,33 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
                 resultado = 1;
                 break;
             }
-            else
+            else if (!isalpha(verifica_char[ordem])) 
             {
                 resultado = 2;
+                break;
+            }
+            else
+            {
+                resultado = 3;
             }
         }
 
         if (resultado == 1) 
         {
-            printf("Erro, voce inseriu um numero inteiro no nome!\n");
-            printf("Digite o nome novamente!\n");
+            printf("Erro, voce inseriu um inteiro no nome!\nDigite o nome novamente: ");
             scanf("%s", verifica_char);
         } 
-
-    }while (resultado == 1);
+        else if (resultado == 2)
+        {
+            printf("Erro, voce inseriu um caracter especial no nome!\nDigite o nome novamente: ");
+            scanf("%s",verifica_char);
+        }
+        else
+        {
+            printf("Erro, Parece que voce inseriu nome e caracter!\nDigite o nome novamente: ");
+            scanf("%s",verifica_char);
+        }
+    }while (resultado == 1 || resultado == 2);
 
     for(int ordem = 0; ordem < *quantidade;ordem ++)
     {
@@ -155,7 +168,7 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente **usuario, int *quantidad
     }
     (*usuario)[*quantidade].CodigoCliente = verifica_inteiro;
     
-    fprintf(arquivo, "\n%s %s %d", (*usuario)[*quantidade].Nome, (*usuario)[*quantidade].Endereco, (*usuario)[*quantidade].CodigoCliente);
+    fprintf(arquivo, "%s %s %d\n", (*usuario)[*quantidade].Nome, (*usuario)[*quantidade].Endereco, (*usuario)[*quantidade].CodigoCliente);
     printf("Novo usuario adicionado!\n");
 
     fclose(arquivo);
@@ -192,12 +205,17 @@ int JumpSearchCod(Cliente **usuarios, int *QuantidadeDeCliente, int *codigo)
     return -1;//C11
 }
 
-int jumpSearchNome(Cliente** cliente, int *QuantidadeDeClientes, char *nome)
+int jumpSearchNome(Cliente** cliente, int *QuantidadeDeClientes, char nome[])
 {
     int salto = sqrt(*QuantidadeDeClientes);//C1 O(n^(1/2)) -> Grau dominate, logo a função sera de raiz quadrada
     int i = 0, j = 0;//C2
 
     qsort((*cliente), *QuantidadeDeClientes, sizeof(Cliente), comparar_nome);//C3
+
+    for (int ordem = 0; ordem < strlen(nome); ordem++) 
+    {
+        nome[ordem] = toupper(nome[ordem]);
+    }
 
     while (i < *QuantidadeDeClientes && strcmp((*cliente)[i].Nome, nome) < 0)//C4 O(n)
     {
@@ -237,26 +255,34 @@ int comparar_nome(const void *a, const void *b)
     return strcmp(clientea->Nome,clienteb->Nome);
 }
 
-void VerificaBuscaCod(Cliente **usuario, int *codigo, int *retorno)
+void VerificaBuscaCod(Cliente **usuario, int *codigo, int *retorno, double *tempo)
 {
     if (*retorno == -1)
     {
-        printf("Nao foi possivel encontrar o cliente");
+        system("clear");
+        printf("NAO FOI POSSIVEL ENCONTRAR O CLIENTE, TENTE NOVAMENTE!\n");
+        printf("Tempo de execucao: %.3f Milisegundos\n\n", *tempo);
     }
     else
     {
-        printf("O usuario do codigo %d esta na posicao %d\nSeu nome e %s\n", *codigo, *retorno + 1, (*usuario)[*retorno].Nome);
+        system("clear");
+        printf("CLIENTE ENCONTRADO!\n\nDados\nNome: %s\nEndereco: %s\nCodigo: %d\n", (*usuario)[*retorno].Nome, (*usuario)[*retorno].Endereco,(*usuario)[*retorno].CodigoCliente);
+        printf("Tempo de execucao: %.3f Milisegundos\n\n", *tempo);    
     }
 }
 
-void VerificaBuscaNome(Cliente **usuario, int *retorno)
+void VerificaBuscaNome(Cliente **usuario, int *retorno, double *tempo)
 {
     if (*retorno == -1)
     {
-        printf("Nao foi possivel encontrar o cliente\n");
+        system("clear");
+        printf("NAO FOI POSSIVEL ENCONTRAR O CLIENTE, TENTE NOVAMENTE!\n");
+        printf("Tempo de execucao: %.3f Milisegundos\n\n", *tempo);
     }
     else
     {
-        printf("O usuario do nome %s Seu codigo e %d\n", (*usuario)[*retorno].Nome, (*usuario)[*retorno].CodigoCliente);
+        system("clear");
+        printf("CLIENTE ENCONTRADO!\n\nDados\nNome: %s\nEndereco: %s\nCodigo: %d\n", (*usuario)[*retorno].Nome, (*usuario)[*retorno].Endereco,(*usuario)[*retorno].CodigoCliente);
+        printf("Tempo de execucao: %.3f Milisegundos\n\n", *tempo);
     }
 }

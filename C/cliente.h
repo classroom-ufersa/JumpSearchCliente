@@ -26,10 +26,10 @@ void AdicionarNovoCliente(char *NomeDoArquivo, Cliente** usuario, int *quantidad
 int JumpSearchCod(Cliente** usuarios, int *n, int *codigo);
 
 //função criada para verificar o resuldado da busca jumpsearch por codigo;
-void VerificaBuscaCod(Cliente **usuario, int *codigo, int *retorno);
+void VerificaBuscaCod(Cliente **usuario, int *codigo, int *retorno, double *tempo);
 
 //função criada para verificar o resuldado da busca jumpsearch por nome;
-void VerificaBuscaNome(Cliente **usuario, int *retorno);
+void VerificaBuscaNome(Cliente **usuario, int *retorno, double *tempo);
 
 //função auxiliar para ordenar pelo codigo;
 int comparar_codigo(const void *a, const void *b);
